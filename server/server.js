@@ -26,8 +26,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// CORS Middleware
-app.use(cors());
+// CORS Middleware with specific origin
+app.use(cors({
+  origin: NODE_ENV === 'production'
+    ? ['https://shopnellore-frontend.onrender.com', 'https://shopnellore.onrender.com']
+    : 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Middleware
 app.use(express.json());
