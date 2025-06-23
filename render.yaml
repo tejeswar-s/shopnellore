@@ -2,9 +2,9 @@ services:
   - type: web
     name: shopnellore
     env: node
-    buildCommand: npm run build
+    buildCommand: cd frontend && npm install && npm run build && cd .. && npm install
     startCommand: npm start
-    nodeVersion: 18.x
+    nodeVersion: 16.x
     envVars:
       - key: NODE_ENV
         value: production 
