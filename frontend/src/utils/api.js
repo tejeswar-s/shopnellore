@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Use the deployed Render backend URL
-const API_URL = 'https://shopnellore.onrender.com/api';
+const API_URL = 'https://shopnellore.onrender.com';
 
 const api = axios.create({
   baseURL: API_URL,
