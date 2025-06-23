@@ -22,19 +22,12 @@ connectDB();
 
 const app = express();
 
-// Hardcoded values for development
-const PORT = 5000;
-const NODE_ENV = 'development';
+// Use environment variables with fallbacks
+const PORT = process.env.PORT || 5000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // CORS Middleware
-app.use(cors({
-    origin: NODE_ENV === 'production' 
-        ? process.env.FRONTEND_URL 
-        : ['http://localhost:3000', 'http://127.0.0.1:3000'],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
-}));
+app.use(cors());
 
 // Middleware
 app.use(express.json());
@@ -53,10 +46,11 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Serve static files in production
 if (NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
+    // Serve frontend static files
+    app.use(express.static(path.join(__dirname, '../frontend/build')));
 
     app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+        res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
     );
 } else {
     app.get('/', (req, res) => {

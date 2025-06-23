@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: shopnellore
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    nodeVersion: 18.x
+    envVars:
+      - key: NODE_ENV
+        value: production 
