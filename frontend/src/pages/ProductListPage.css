@@ -1,0 +1,34 @@
+.price-slider-container .horizontal-slider {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.price-slider-container .track {
+    top: 0;
+    bottom: 0;
+    background: #0d6efd;
+    border-radius: 4px;
+}
+
+.price-slider-container .track-1 {
+    background: #dee2e6;
+}
+
+.price-slider-container .thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #0d6efd;
+    border-radius: 50%;
+    cursor: grab;
+    top: -6px;
+    outline: none;
+}
+
+.price-slider-container .thumb:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
