@@ -3,7 +3,14 @@ services:
     name: shopnellore
     env: node
     rootDir: .
-    buildCommand: npm install && cd frontend && npm install && npm run build && cd ..
+    buildCommand: |
+      npm install
+      cd frontend
+      npm install
+      npm run build
+      cd ..
+      mkdir -p frontend/build
+      mv frontend/build ./frontend/
     startCommand: npm start
     nodeVersion: 16.x
     envVars:
